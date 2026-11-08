@@ -160,6 +160,7 @@ Synonyme und Umschreibungen sowie Hinweise auf die Bedeutung. Genau dafür ist d
 
 | Fehler | Lösung |
 |---|---|
+| pip-Warnung „google-colab … requires google-auth==…“ | Harmlos, kommt von einem früheren `pip install -U`. Mit *Laufzeit → Laufzeit trennen und löschen* frisch starten. Die Notebooks installieren inzwischen ohne `-U`. |
 | `429` / „Zu viele Anfragen“ | Kontingent pro Minute erreicht. 30–60 Sekunden warten. Wächter-KI ausschalten oder Key wechseln. |
 | `404` / Modell nicht gefunden | In der Setup-Zelle `MODEL` ändern, z. B. auf `"gemini-2.5-flash"`. |
 | Secret wird nicht gefunden | Im 🔑-Menü den Schalter *Notebook-Zugriff* einschalten. Notfalls den Key in das Eingabefeld eingeben. |
