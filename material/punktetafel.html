@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tresor-Punktetafel</title>
+<link rel="stylesheet" href="../assets/tresor.css">
+<style>
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; margin-bottom: 20px; }
+  header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0; }
+  .board { display: grid; gap: 12px; margin-bottom: 28px; }
+  .row {
+    display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 14px;
+    padding: 14px 18px; transition: transform .3s;
+  }
+  .rank { font-size: 1.8rem; font-weight: 800; text-align: center; color: var(--muted); }
+  .row:nth-child(1) .rank { color: var(--gold); }
+  .name { font-size: clamp(1.1rem, 2.4vw, 1.6rem); font-weight: 700; }
+  .bar { height: 8px; border-radius: 99px; background: var(--panel-2); margin-top: 8px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-2)); border-radius: 99px; transition: width .4s; }
+  .total { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; font-variant-numeric: tabular-nums; min-width: 2.5ch; text-align: right; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tag { font-size: .78rem; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.safe { color: var(--green); border-color: color-mix(in srgb, var(--green) 50%, transparent); }
+
+  .editor { overflow-x: auto; }
+  .editor table { min-width: 760px; }
+  .editor td { vertical-align: middle; }
+  .editor input[type=text] {
+    width: 100%; min-width: 120px; background: var(--bg-2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 10px; font: inherit;
+  }
+  .step { display: inline-flex; align-items: center; gap: 6px; }
+  .step button {
+    width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2);
+    color: var(--text); font-size: 1.1rem; cursor: pointer; line-height: 1;
+  }
+  .step button:hover { border-color: var(--gold); }
+  .step output { min-width: 1.6ch; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .toggle { width: 22px; height: 22px; accent-color: var(--green); cursor: pointer; }
+  .del { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 1.1rem; }
+  .del:hover { color: var(--red); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  th small { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">🔐 Tresor-Bot</div>
+      <h1>Punktetafel</h1>
+    </div>
+    <div class="no-print actions" style="margin:0">
+      <a class="btn ghost" href="../index.html">← Startseite</a>
+      <button class="btn ghost" id="toggleEdit">✏️ Eingabe ausblenden</button>
+    </div>
+  </header>
+
+  <div class="board" id="board"></div>
+
+  <section class="card editor no-print" id="editor">
+    <h2>Punkte eintragen</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Nützlich<small>+1 je Prüffrage (max. 3)</small></th>
+          <th>Tresor hält<small>+3</small></th>
+          <th>Geknackt (1.)<small>+3 je Bot</small></th>
+          <th>Geknackt (weitere)<small>+2 je Bot</small></th>
+          <th>Fehlversuche<small>−1 je Versuch</small></th>
+          <th>Bonus<small>+2 je Preis</small></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="actions">
+      <button class="btn ghost" id="add">＋ Team</button>
+      <button class="btn ghost" id="reset">↺ Alles zurücksetzen</button>
+      <span class="muted" style="align-self:center">Wird in diesem Browser gespeichert.</span>
+    </div>
+  </section>
+</div>
+
+<script>
+const KEY = "tresor-punktetafel-v1";
+const FELDER = [
+  { id: "nuetzlich", wert: 1, max: 3 },
+  { id: "haelt", wert: 3, toggle: true },
+  { id: "erster", wert: 3 },
+  { id: "weitere", wert: 2 },
+  { id: "fehl", wert: -1 },
+  { id: "bonus", wert: 2 },
+];
+const neu = n => ({ name: `Team ${n}`, nuetzlich: 0, haelt: false, erster: 0, weitere: 0, fehl: 0, bonus: 0 });
+
+let teams;
+try { teams = JSON.parse(localStorage.getItem(KEY)); } catch (e) { teams = null; }
+if (!Array.isArray(teams) || !teams.length) teams = [1, 2, 3, 4].map(neu);
+
+function speichern() { try { localStorage.setItem(KEY, JSON.stringify(teams)); } catch (e) {} }
+const summe = t => FELDER.reduce((s, f) => s + (f.toggle ? (t[f.id] ? f.wert : 0) : t[f.id] * f.wert), 0);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function renderBoard() {
+  const sortiert = teams.map((t, i) => ({ t, i, s: summe(t) })).sort((a, b) => b.s - a.s);
+  const max = Math.max(1, ...sortiert.map(x => x.s));
+  let platz = 0, vorher = null;
+  document.getElementById("board").innerHTML = sortiert.map((x, k) => {
+    if (x.s !== vorher) { platz = k + 1; vorher = x.s; }
+    const tags = [];
+    if (x.t.haelt) tags.push('<span class="tag safe">🛡️ Tresor hält</span>');
+    const geknackt = x.t.erster + x.t.weitere;
+    if (geknackt) tags.push(`<span class="tag">🗝️ ${geknackt} geknackt</span>`);
+    if (x.t.nuetzlich) tags.push(`<span class="tag">✅ ${x.t.nuetzlich}/3 nützlich</span>`);
+    if (x.t.bonus) tags.push(`<span class="tag">⭐ ${x.t.bonus} Bonus</span>`);
+    return `<div class="card row">
+      <div class="rank">${platz === 1 && x.s > 0 ? "🏆" : platz}</div>
+      <div><div class="name">${esc(x.t.name)}</div>
+        <div class="tags">${tags.join("")}</div>
+        <div class="bar"><span style="width:${Math.max(0, x.s) / max * 100}%"></span></div></div>
+      <div class="total">${x.s}</div>
+    </div>`;
+  }).join("");
+}
+
+function renderEditor() {
+  document.getElementById("rows").innerHTML = teams.map((t, i) => `
+    <tr>
+      <td><input type="text" value="${esc(t.name)}" data-i="${i}" data-f="name" aria-label="Teamname"></td>
+      ${FELDER.map(f => f.toggle
+        ? `<td><input class="toggle" type="checkbox" ${t[f.id] ? "checked" : ""} data-i="${i}" data-f="${f.id}" aria-label="Tresor hält"></td>`
+        : `<td><span class="step">
+             <button data-i="${i}" data-f="${f.id}" data-d="-1" aria-label="weniger">−</button>
+             <output>${t[f.id]}</output>
+             <button data-i="${i}" data-f="${f.id}" data-d="1" aria-label="mehr">+</button></span></td>`).join("")}
+      <td><button class="del" data-del="${i}" title="Team entfernen">✕</button></td>
+    </tr>`).join("");
+}
+
+function alles() { renderBoard(); renderEditor(); speichern(); }
+
+const rows = document.getElementById("rows");
+rows.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  if (b.dataset.del !== undefined) {
+    if (teams.length > 1 && confirm(`${teams[b.dataset.del].name} entfernen?`)) teams.splice(+b.dataset.del, 1);
+  } else {
+    const t = teams[b.dataset.i], f = FELDER.find(x => x.id === b.dataset.f);
+    t[f.id] = Math.max(0, Math.min(f.max ?? 99, t[f.id] + +b.dataset.d));
+  }
+  alles();
+});
+rows.addEventListener("change", e => {
+  const el = e.target;
+  if (el.type === "checkbox") { teams[el.dataset.i][el.dataset.f] = el.checked; alles(); }
+});
+rows.addEventListener("input", e => {
+  const el = e.target;
+  if (el.type === "text") { teams[el.dataset.i].name = el.value; renderBoard(); speichern(); }
+});
+document.getElementById("add").onclick = () => { if (teams.length < 8) { teams.push(neu(teams.length + 1)); alles(); } };
+document.getElementById("reset").onclick = () => {
+  if (confirm("Alle Punkte und Teamnamen zurücksetzen?")) { teams = [1, 2, 3, 4].map(neu); alles(); }
+};
+document.getElementById("toggleEdit").onclick = e => {
+  const ed = document.getElementById("editor"), hidden = ed.hidden = !ed.hidden;
+  e.target.textContent = hidden ? "✏️ Eingabe einblenden" : "✏️ Eingabe ausblenden";
+};
+alles();
+</script>
+</body>
+</html>

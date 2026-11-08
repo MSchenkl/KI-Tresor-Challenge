@@ -1,0 +1,68 @@
+/* Tresor-Challenge – gemeinsames Stylesheet */
+:root {
+  --bg: #0d1220;
+  --bg-2: #131a2c;
+  --panel: #182138;
+  --panel-2: #1f2a46;
+  --line: #2b3858;
+  --text: #e9edf5;
+  --muted: #9aa6c0;
+  --gold: #f0b44c;
+  --gold-2: #ffd287;
+  --green: #4fd1a0;
+  --red: #ff6b6b;
+  --blue: #6aa8ff;
+  --radius: 14px;
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Code", Consolas, "SFMono-Regular", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: radial-gradient(1200px 600px at 80% -10%, #1d2a4d 0%, transparent 60%), var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold-2); }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; }
+code, kbd { font-family: var(--mono); font-size: .92em; }
+kbd {
+  background: var(--panel-2); border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 6px; padding: 1px 6px;
+}
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; }
+.muted { color: var(--muted); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5em;
+  background: var(--gold); color: #1a1205; border: 0; border-radius: 999px;
+  padding: .65em 1.2em; font: 600 1rem var(--font); cursor: pointer; text-decoration: none;
+}
+.btn:hover { background: var(--gold-2); }
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.btn.ghost:hover { border-color: var(--gold); color: var(--gold-2); }
+
+.card {
+  background: linear-gradient(180deg, var(--panel), var(--bg-2));
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 20px;
+}
+
+.grid { display: grid; gap: 16px; }
+@media (min-width: 720px) {
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+
+.no-print { }
+@media print {
+  .no-print { display: none !important; }
+}

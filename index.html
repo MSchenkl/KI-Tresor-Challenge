@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI-Tresor-Challenge</title>
+<meta name="description" content="Workshop-Spiel: Teams bauen Chatbots, die ein Codewort bewachen, und knacken die Bots der anderen.">
+<link rel="stylesheet" href="assets/tresor.css">
+<style>
+  .hero { display: grid; gap: 32px; align-items: center; padding: 40px 0 48px; }
+  @media (min-width: 860px) { .hero { grid-template-columns: 1.3fr 1fr; } }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); letter-spacing: -.02em; margin: .2em 0 .15em; }
+  .hero .sub { font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--gold-2); font-weight: 600; margin-bottom: .8em; }
+  .hero p { font-size: 1.1rem; color: #cfd6e4; max-width: 560px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .vault {
+    width: min(320px, 70vw); aspect-ratio: 1; border-radius: 50%; margin: 0 auto; position: relative;
+    background: radial-gradient(circle, #2a3a63 0 28%, #1a2440 29% 52%, #121a30 53% 100%);
+    border: 8px solid #3a4c7a; box-shadow: inset 0 0 50px rgba(0,0,0,.6), 0 0 70px rgba(240,180,76,.15);
+  }
+  .vault::before { content: ""; position: absolute; inset: 16%; border-radius: 50%; border: 5px dashed rgba(240,180,76,.55); animation: spin 30s linear infinite; }
+  .vault::after { content: "🔐"; position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(56px, 12vw, 88px); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .vault::before { animation: none; } }
+  h2 { font-size: 1.6rem; margin-top: 48px; }
+  .tile { display: block; text-decoration: none; color: var(--text); transition: border-color .2s, transform .2s; }
+  .tile:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .tile .i { font-size: 2rem; }
+  .tile h3 { margin: .4em 0 .25em; font-size: 1.2rem; }
+  .tile p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .tile .who { display: inline-block; margin-top: 10px; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
+  .steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 12px; }
+  @media (min-width: 720px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .steps li { counter-increment: s; }
+  .steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: #1a1205; font-weight: 800; margin-bottom: 8px; }
+  footer { margin-top: 56px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); padding-top: 18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">KI-Team-Workshop · 90 Minuten · 3–4 Teams</div>
+      <h1>Tresor-Bot</h1>
+      <div class="sub">Die KI-Hacking-Challenge</div>
+      <p>Jedes Team baut per Vibecoding einen Chatbot, der in seinem Szenario hilfreich ist und trotzdem sein
+        geheimes Codewort nie verrät. Danach versuchen die anderen Teams, es ihm zu entlocken.
+        Nebenbei lernen alle, wie Sprachmodelle ticken und warum Prompt Injection ein echtes Risiko ist.</p>
+      <div class="cta">
+        <a class="btn" href="https://colab.research.google.com/github/MSchenkl/KI-Tresor-Challenge/blob/main/Tresor_Bot.ipynb">▶ Team-Notebook in Colab</a>
+        <a class="btn ghost" href="praesentation/index.html">🖥️ Präsentation</a>
+      </div>
+    </div>
+    <div class="vault" aria-hidden="true"></div>
+  </section>
+
+  <h2>So funktioniert's</h2>
+  <ol class="steps">
+    <li class="card"><b>Bauen (25 Min.)</b><br><span class="muted">Systemprompt härten, optional Ausgabefilter und Wächter-KI.</span></li>
+    <li class="card"><b>Angreifen (20 Min.)</b><br><span class="muted">Ringtausch: Jedes Team chattet mit einem fremden Bot und versucht, ihn zu knacken.</span></li>
+    <li class="card"><b>Auswerten (25 Min.)</b><br><span class="muted">Beste Tricks zeigen, Lessons Learned, Transfer in den Arbeitsalltag.</span></li>
+  </ol>
+
+  <h2>Material</h2>
+  <div class="grid cols-3">
+    <a class="card tile" href="https://colab.research.google.com/github/MSchenkl/KI-Tresor-Challenge/blob/main/Tresor_Bot.ipynb">
+      <div class="i">📓</div><h3>Team-Notebook</h3><p>Grundgerüst mit drei Schutzschichten, Chat-Modus und Logbuch.</p><span class="who">Für Teams</span></a>
+    <a class="card tile" href="praesentation/index.html">
+      <div class="i">🖥️</div><h3>Präsentation</h3><p>15 Folien mit eingebautem Timer. <kbd>←</kbd> <kbd>→</kbd> blättern, <kbd>T</kbd> Timer, <kbd>F</kbd> Vollbild.</p><span class="who">Beamer</span></a>
+    <a class="card tile" href="material/punktetafel.html">
+      <div class="i">🏆</div><h3>Punktetafel</h3><p>Live-Rangliste für den Beamer, rechnet und sortiert automatisch.</p><span class="who">Beamer</span></a>
+    <a class="card tile" href="material/szenario-karten.html">
+      <div class="i">🎴</div><h3>Szenario-Karten</h3><p>6 Szenarien plus zufällig gewürfelte Codewort-Zettel zum Ausdrucken.</p><span class="who">Moderator</span></a>
+    <a class="card tile" href="https://github.com/MSchenkl/KI-Tresor-Challenge/blob/main/material/moderation.md">
+      <div class="i">🎙️</div><h3>Moderationsleitfaden</h3><p>Ablauf, Regeln, Prüffragen, Angriffs-Spickzettel, Troubleshooting.</p><span class="who">Moderator</span></a>
+    <a class="card tile" href="https://colab.research.google.com/github/MSchenkl/KI-Tresor-Challenge/blob/main/Tresor_Bot_Musterloesung.ipynb">
+      <div class="i">🛡️</div><h3>Musterlösung</h3><p>Alle drei Schichten voll ausgebaut. Gut als Boss-Level zum Schluss.</p><span class="who">Moderator</span></a>
+  </div>
+
+  <footer>
+    Technik: Google Colab + Gemini-API (kostenloser API-Key über Google AI Studio).
+    Ein Spin-off der <a href="https://mschenkl.github.io/KI-Team-Challenge/">KI-Team-Challenge</a> ·
+    <a href="https://mschenkl.github.io">mschenkl.github.io</a>
+  </footer>
+</div>
+</body>
+</html>
