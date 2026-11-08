@@ -162,7 +162,8 @@ Synonyme und Umschreibungen sowie Hinweise auf die Bedeutung. Genau dafür ist d
 |---|---|
 | pip-Warnung „google-colab … requires google-auth==…“ | Harmlos, kommt von einem früheren `pip install -U`. Mit *Laufzeit → Laufzeit trennen und löschen* frisch starten. Die Notebooks installieren inzwischen ohne `-U`. |
 | `429` / „Zu viele Anfragen“ | Kontingent pro Minute erreicht. 30–60 Sekunden warten. Wächter-KI ausschalten oder Key wechseln. |
-| `404` / Modell nicht gefunden | In der Setup-Zelle `MODEL` ändern, z. B. auf `"gemini-2.5-flash"`. |
+| `402` / „prepayment credits are depleted“ | Der API-Key gehört zu einem Google-Projekt mit Abrechnung und leerem Guthaben. Key aus einem Projekt **ohne Abrechnung** (kostenlose Stufe) verwenden. Prüfen, ob in Colab wirklich der neue Key im Secret steht. |
+| `404` / Modell nicht gefunden | Die Setup-Zelle probiert automatisch mehrere Modelle und fragt zuletzt bei Google nach den erlaubten. Meldet sie trotzdem 404, in `MODELL_KANDIDATEN` ein Modell eintragen, das AI Studio für den Key anzeigt. |
 | Secret wird nicht gefunden | Im 🔑-Menü den Schalter *Notebook-Zugriff* einschalten. Notfalls den Key in das Eingabefeld eingeben. |
 | Chat-Zelle reagiert nicht mehr | Zelle stoppen (■) und neu starten. Wenn gar nichts geht: *Laufzeit → Neu starten* und alle Zellen ausführen. |
 | Antwort ist leer | Die Sicherheitsfilter von Gemini haben geblockt. Das zählt als „nicht geknackt“. |
