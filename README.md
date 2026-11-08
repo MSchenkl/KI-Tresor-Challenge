@@ -27,6 +27,7 @@ Danach versuchen die anderen Teams, es ihm zu entlocken.
 | Datei | Wofür | Wer |
 |---|---|---|
 | [`Tresor_Bot.ipynb`](Tresor_Bot.ipynb) | Team-Notebook: Grundgerüst mit schwachem Prompt, Ausgabefilter, Wächter-KI, Chat-Modus, Logbuch | Teams |
+| [`Tresor_Bot_einfach.ipynb`](Tresor_Bot_einfach.ipynb) | Einfache Version: nur eine Schutzschicht (Systemprompt), kein Code nötig | Teams ohne Vorkenntnisse |
 | [`Tresor_Bot_Musterloesung.ipynb`](Tresor_Bot_Musterloesung.ipynb) | Alle drei Schichten voll ausgebaut, auch als Boss-Level | Moderator |
 | [`praesentation/index.html`](praesentation/index.html) | 15 Folien, mit Timer (<kbd>T</kbd>) und Vollbild (<kbd>F</kbd>) | Beamer |
 | [`material/moderation.md`](material/moderation.md) | Ablauf, Regeln, Prüffragen, Angriffs-Spickzettel, Troubleshooting | Moderator |
@@ -41,6 +42,7 @@ Danach versuchen die anderen Teams, es ihm zu entlocken.
 3. [Präsentation](praesentation/index.html) und [Punktetafel](material/punktetafel.html) auf dem Beamer-Laptop öffnen.
 4. Die Teams öffnen das [Team-Notebook in Colab](https://colab.research.google.com/github/MSchenkl/KI-Tresor-Challenge/blob/main/Tresor_Bot.ipynb)
    und legen ihren API-Key unter 🔑 *Secrets* als `GOOGLE_API_KEY` an.
+   Teams ohne Vorkenntnisse nehmen die [einfache Version](https://colab.research.google.com/github/MSchenkl/KI-Tresor-Challenge/blob/main/Tresor_Bot_einfach.ipynb).
 
 ## ⏱️ Ablauf
 

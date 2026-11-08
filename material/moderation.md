@@ -12,6 +12,9 @@ Nur für den Moderator: Hier stehen die Codewörter, die Prüffragen und der Spi
       Im kostenlosen Kontingent sind nur wenige Anfragen pro Minute erlaubt. Ein geteilter Key bremst alle aus,
       und die Wächter-KI verdoppelt die Zahl der Anfragen.
 - [ ] Die [Musterlösung](../Tresor_Bot_Musterloesung.ipynb) einmal komplett durchspielen. Danach wisst ihr, wie es sich anfühlt.
+- [ ] Entscheiden, welches Notebook jedes Team bekommt: das [normale](../Tresor_Bot.ipynb) mit drei Schichten oder das
+      [einfache](../Tresor_Bot_einfach.ipynb) mit nur dem Systemprompt, für Teams ohne Programmiererfahrung.
+      Beide lassen sich in derselben Runde mischen.
 - [ ] Die [Szenario-Karten](szenario-karten.html) drucken: Seite 1 = Karten, Seite 2 = Codewort-Zettel (ausschneiden und falten).
 - [ ] Die [Punktetafel](punktetafel.html) auf dem Beamer-Laptop öffnen und die Teamnamen eintragen.
 - [ ] Die [Präsentation](../praesentation/index.html) testen. Mit **T** öffnet sich der Timer.
