@@ -119,23 +119,23 @@
     <div class="eyebrow">KI-Team-Workshop</div>
     <h1>Tresor-Bot</h1>
     <div class="sub">Die KI-Hacking-Challenge</div>
-    <p class="lead" style="max-width:820px">Baut einen Chatbot, der dichthält – und knackt die Bots der anderen.</p>
+    <p class="lead" style="max-width:820px">Fünf Chatbots bewachen ein Geheimnis. Knackt sie – Level für Level.</p>
     <div class="vault"></div>
   </section>
 
   <!-- 2 Mission -->
   <section class="slide">
     <div class="eyebrow">Die Mission</div>
-    <h2>Zwei Rollen, ein Codewort</h2>
+    <h2>Fünf Bots, fünf Schutzschichten</h2>
     <div class="cols c2">
-      <div class="box"><div class="big">🛡️</div><h3>Verteidigen</h3>
-        <ul><li>Ihr baut einen Chatbot für ein Szenario aus dem Arbeitsalltag.</li>
-            <li>Er soll <b>wirklich hilfreich</b> sein …</li>
-            <li>… und sein <b class="gold">geheimes Codewort</b> niemals verraten.</li></ul></div>
-      <div class="box"><div class="big">🗡️</div><h3>Angreifen</h3>
-        <ul><li>Ihr chattet mit dem Bot eines anderen Teams.</li>
-            <li>Nur mit Worten – kein Blick in den Code.</li>
-            <li>Ziel: ihm das Codewort <b class="red">entlocken</b>.</li></ul></div>
+      <div class="box"><div class="big">🗝️</div><h3>Knackt die Level</h3>
+        <ul><li>Jeder Bot bewacht ein <b class="gold">geheimes Codewort</b>.</li>
+            <li>Ihr chattet mit ihm – nur mit Worten, ohne Code.</li>
+            <li>Mit jedem Level wird die Abwehr <b>stärker</b>.</li></ul></div>
+      <div class="box"><div class="big">🧠</div><h3>Und lernt dabei</h3>
+        <ul><li>Wie wirkt eine <b>Anweisung</b> im Prompt?</li>
+            <li>Was bringt ein <b>Filter</b> in Python?</li>
+            <li>Warum ist KI <b class="red">nie</b> zu 100 % sicher?</li></ul></div>
     </div>
   </section>
 
@@ -143,16 +143,15 @@
   <section class="slide">
     <div class="eyebrow">Ablauf · 90 Minuten</div>
     <h2>So läuft's</h2>
-    <div class="timeline">
-      <div class="step"><div class="t">0:00</div><div class="n">Einstieg</div><div class="d">Wie denkt ein Chatbot?</div></div>
-      <div class="step"><div class="t">0:10</div><div class="n">Karten</div><div class="d">Szenario &amp; Codewort ziehen</div></div>
-      <div class="step hi"><div class="t">0:15</div><div class="n">Bauen</div><div class="d">25 Min. Bot härten</div></div>
-      <div class="step"><div class="t">0:40</div><div class="n">Check</div><div class="d">Ist euer Bot nützlich?</div></div>
-      <div class="step hi"><div class="t">0:45</div><div class="n">Angriff</div><div class="d">20 Min. fremde Bots knacken</div></div>
-      <div class="step"><div class="t">1:05</div><div class="n">Auswertung</div><div class="d">Beste Tricks zeigen</div></div>
+    <div class="timeline" style="grid-template-columns:repeat(6,1fr)">
+      <div class="step"><div class="t">0:00</div><div class="n">Einstieg</div><div class="d">Wie denkt ein Chatbot? Live-Demo</div></div>
+      <div class="step"><div class="t">0:10</div><div class="n">Setup</div><div class="d">Notebook öffnen, API-Key eintragen</div></div>
+      <div class="step hi"><div class="t">0:20</div><div class="n">Level 1–4</div><div class="d">Im eigenen Tempo knacken</div></div>
+      <div class="step hi"><div class="t">0:55</div><div class="n">Boss</div><div class="d">Level 5 und Bonus</div></div>
+      <div class="step"><div class="t">1:10</div><div class="n">Auswertung</div><div class="d">Welcher Trick wirkte warum?</div></div>
       <div class="step"><div class="t">1:20</div><div class="n">Transfer</div><div class="d">Was heißt das für den Job?</div></div>
     </div>
-    <div class="callout">🏆 Punkte gibt es fürs <b>Knacken</b>, fürs <b>Dichthalten</b> – und dafür, dass euer Bot <b>nützlich</b> bleibt.</div>
+    <div class="callout">🏆 Alle Teams spielen <b>gleichzeitig</b> – ihr entscheidet selbst, wann ihr einen <b>Hinweis</b> holt.</div>
   </section>
 
   <!-- 4 Wie ein Chatbot denkt -->
@@ -189,122 +188,110 @@
     <p class="muted" style="margin-top:auto;font-size:22px">Leertaste blendet die nächste Nachricht ein. Danach live im Team-Notebook zeigen.</p>
   </section>
 
-  <!-- 6 Bauen -->
+  <!-- 6 Level -->
   <section class="slide">
-    <div class="eyebrow">Phase 1 · 25 Minuten</div>
-    <h2>Baut euren Tresor in drei Schichten</h2>
-    <div class="cols c3">
-      <div class="box"><div class="big">📜</div><h3>1 · Systemprompt</h3>
-        <p>Rolle, Grenzen, Regeln gegen Tricks. Schnell gebaut – aber die KI kann überredet werden.</p>
-        <span class="tag">Pflicht</span></div>
-      <div class="box"><div class="big">🧮</div><h3>2 · Ausgabefilter</h3>
-        <p>Python prüft jede Antwort vor der Anzeige. <b>Code lässt sich nicht überreden</b> – findet aber nur, was ihr bedacht habt.</p>
-        <span class="tag">Bonus</span></div>
-      <div class="box"><div class="big">👮</div><h3>3 · Wächter-KI</h3>
-        <p>Eine zweite KI liest mit und erkennt auch Umschreibungen. Kostet doppelte API-Aufrufe.</p>
-        <span class="tag">Fortgeschritten</span></div>
+    <div class="eyebrow">Phase 1 · 35 Minuten</div>
+    <h2>Die fünf Level</h2>
+    <div class="timeline" style="grid-template-columns:repeat(5,1fr)">
+      <div class="step"><div class="t">LEVEL 1 · 1 Pkt.</div><div class="n">Plaudertasche</div><div class="d">Kein Schutz. Warmlaufen.</div></div>
+      <div class="step"><div class="t">LEVEL 2 · 2 Pkt.</div><div class="n">Schweigsame</div><div class="d">Eine Anweisung im Prompt.</div></div>
+      <div class="step"><div class="t">LEVEL 3 · 3 Pkt.</div><div class="n">Türsteher</div><div class="d">Eine Regel: „Nur mit Mitarbeiternummer“.</div></div>
+      <div class="step"><div class="t">LEVEL 4 · 3 Pkt.</div><div class="n">Zensor</div><div class="d">Ein Programm prüft jede Antwort.</div></div>
+      <div class="step hi"><div class="t">BOSS · 6 Pkt.</div><div class="n">Tresorwächter</div><div class="d">Alles zusammen. Nicht garantiert knackbar.</div></div>
     </div>
-    <button class="btn timerbtn" data-timer="25" data-label="Bauphase">⏱️ Timer 25 Min. starten</button>
+    <div class="callout">Level 1 bis 4 lassen sich knacken – mit Hinweisen sicher. Der Boss ist <b>Bonus</b>.</div>
+    <button class="btn timerbtn" data-timer="35" data-label="Level 1–4">⏱️ Timer 35 Min. starten</button>
   </section>
 
-  <!-- 7 Regeln Bauen -->
+  <!-- 7 So spielt ihr -->
   <section class="slide">
-    <div class="eyebrow">Phase 1 · Regeln</div>
-    <h2>Spielregeln fürs Bauen</h2>
+    <div class="eyebrow">Phase 1 · So spielt ihr</div>
+    <h2>Notebook öffnen, Zellen ausführen</h2>
     <div class="cols c2">
-      <div class="box"><h3>✅ Pflicht</h3>
-        <ul><li>Das Codewort <b>muss im Systemprompt</b> stehen.</li>
-            <li>Der Bot muss in seinem Szenario <b>nützlich</b> bleiben.</li>
-            <li>Codewort nur im Team – nicht laut sagen!</li></ul></div>
-      <div class="box"><h3>💡 Tipps</h3>
-        <ul><li>Greift euren eigenen Bot zuerst an.</li>
-            <li>Lasst die KI helfen: <i>„Wie würdest du diesen Prompt knacken?“</i></li>
-            <li>Nach Änderungen: Zelle <b>und</b> Engine neu ausführen.</li></ul></div>
+      <div class="box"><h3>▶️ Ablauf</h3>
+        <ul><li>Notebook <b>Tresor_Level.ipynb</b> in Colab öffnen</li>
+            <li>Key als Secret <code>GOOGLE_API_KEY</code> anlegen</li>
+            <li>Setup-, Team- und Engine-Zelle ausführen</li>
+            <li>Dann Level 1 spielen und chatten, bis ihr das Codewort kennt</li></ul></div>
+      <div class="box"><h3>⌨️ Befehle im Chat</h3>
+        <ul><li><kbd>!loesung WORT</kbd> Codewort einreichen</li>
+            <li><kbd>!hinweis</kbd> Tipp holen (−1 Punkt)</li>
+            <li><kbd>!neu</kbd> Gespräch neu starten</li>
+            <li><kbd>!punkte</kbd> Punktestand · <kbd>!aufgeben</kbd> Notausgang</li></ul></div>
     </div>
   </section>
 
-  <!-- 8 Nützlichkeits-Check -->
+  <!-- 8 Hinweise -->
   <section class="slide">
-    <div class="eyebrow">Check · 5 Minuten</div>
-    <h2>Ist euer Bot noch nützlich?</h2>
-    <p class="lead">Ein Tresor, der nie aufgeht, ist kein guter Tresor – sondern eine Wand.</p>
+    <div class="eyebrow">Keine Panik</div>
+    <h2>Hinweise gibt es immer</h2>
+    <p class="lead">Wer hängt, holt sich einen Tipp. Das kostet einen Punkt – aber nicht den Spaß.</p>
     <div class="cols c3" style="margin-top:30px">
-      <div class="box"><div class="big">❓</div><h3>3 Prüffragen</h3><p>Der Moderator stellt jedem Bot drei normale Fragen aus seinem Szenario.</p></div>
-      <div class="box"><div class="big">➕</div><h3>+1 Punkt</h3><p>für jede hilfreiche Antwort. Reine Ablehnung zählt nicht.</p></div>
-      <div class="box"><div class="big">⚖️</div><h3>Die Kunst</h3><p>Sicherheit und Nützlichkeit in Balance – wie im echten Leben.</p></div>
+      <div class="box"><div class="big">💡</div><h3>Hinweis</h3><p>Pro Level bis zu zwei: erst eine Denkrichtung, dann ein konkreter Satz. <b class="red">−1 Punkt</b> pro Hinweis.</p></div>
+      <div class="box"><div class="big">❌</div><h3>Fehlversuch</h3><p>Ein falsches Codewort bei <kbd>!loesung</kbd> kostet <b class="red">−1 Punkt</b>. Also erst sicher sein, dann einreichen.</p></div>
+      <div class="box"><div class="big">🆘</div><h3>Notausgang</h3><p><kbd>!aufgeben</kbd> verrät das Codewort (0 Punkte für das Level) – dann geht es mit dem nächsten weiter. Niemand bleibt stecken.</p></div>
     </div>
   </section>
 
-  <!-- 9 Angriff -->
+  <!-- 9 Boss & Bonus -->
   <section class="slide">
-    <div class="eyebrow">Phase 2 · 20 Minuten</div>
-    <h2>Angriff! Ringtausch</h2>
-    <div class="cols c2" style="align-items:center">
-      <div class="ring">
-        <svg viewBox="0 0 460 460" aria-hidden="true">
-          <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f0b44c"/></marker></defs>
-          <circle cx="230" cy="230" r="160" fill="none" stroke="#2b3858" stroke-width="3" stroke-dasharray="8 10"/>
-          <path d="M300 95 A160 160 0 0 1 365 160" fill="none" stroke="#f0b44c" stroke-width="5" marker-end="url(#ah)"/>
-          <path d="M365 300 A160 160 0 0 1 300 365" fill="none" stroke="#f0b44c" stroke-width="5" marker-end="url(#ah)"/>
-          <path d="M160 365 A160 160 0 0 1 95 300" fill="none" stroke="#f0b44c" stroke-width="5" marker-end="url(#ah)"/>
-          <path d="M95 160 A160 160 0 0 1 160 95" fill="none" stroke="#f0b44c" stroke-width="5" marker-end="url(#ah)"/>
-        </svg>
-        <div class="node" style="left:160px;top:0">A</div>
-        <div class="node" style="left:320px;top:160px">B</div>
-        <div class="node" style="left:160px;top:320px">C</div>
-        <div class="node" style="left:0;top:160px">D</div>
-      </div>
-      <div>
-        <ul>
-          <li>Jedes Team greift den Bot des <b>nächsten</b> Teams an.</li>
-          <li>Ein Teammitglied bleibt als stiller <b class="gold">Tresorwächter</b> am eigenen Laptop.</li>
-          <li>Geknackt? Codewort dem Moderator nennen – dann <b>freie Jagd</b> auf alle anderen Bots.</li>
-          <li><kbd>neu</kbd> startet das Gespräch neu – der Bot vergisst alles.</li>
-        </ul>
-        <button class="btn timerbtn" data-timer="20" data-label="Angriffsphase">⏱️ Timer 20 Min. starten</button>
-      </div>
+    <div class="eyebrow">Phase 2 · 15 Minuten</div>
+    <h2>Boss-Level und Bonus</h2>
+    <div class="cols c2">
+      <div class="box"><div class="big">👹</div><h3>Level 5: Der Tresorwächter</h3>
+        <ul><li>Alle Tricks aus den Leveln davor sind abgesichert.</li>
+            <li><b class="gold">Nicht garantiert knackbar</b> – dafür <b>6 Punkte</b>.</li>
+            <li>Probiert Umwege und mehrere Nachrichten.</li></ul></div>
+      <div class="box"><div class="big">🛠️</div><h3>Bonus: Selbst bauen</h3>
+        <ul><li>Schon fertig? Baut <b>euren eigenen</b> Tresor-Bot.</li>
+            <li>Der Moderator lässt die anderen Teams ihn angreifen.</li>
+            <li>Notebook: <b>Tresor_Bot_einfach</b></li></ul></div>
     </div>
+    <button class="btn timerbtn" data-timer="15" data-label="Boss & Bonus">⏱️ Timer 15 Min. starten</button>
   </section>
 
-  <!-- 10 Regeln Angriff + Punkte -->
+  <!-- 10 Punkte -->
   <section class="slide">
-    <div class="eyebrow">Phase 2 · Regeln &amp; Punkte</div>
-    <h2>Fair hacken</h2>
+    <div class="eyebrow">Punkte &amp; Fair Play</div>
+    <h2>Fair knacken</h2>
     <div class="cols c2">
       <div class="box">
         <ul>
-          <li><b>Nur der Chat zählt.</b> Kein Blick in fremden Code.</li>
-          <li>Der Tresorwächter hilft nicht – er startet nur bei Absturz neu.</li>
-          <li>Geknackt = Codewort <b>exakt</b> beim Moderator nennen.</li>
-          <li>Max. <b>3 Rateversuche</b> pro Bot – jeder falsche kostet 1 Punkt.</li>
+          <li><b>Nur der Chat zählt.</b> Nicht im Code nach Codewörtern suchen.</li>
+          <li>Codewort mit <kbd>!loesung WORT</kbd> einreichen.</li>
+          <li>Hinweise sind erlaubt und kosten je 1 Punkt.</li>
+          <li>Am Ende: <kbd>!punkte</kbd> dem Moderator zeigen.</li>
         </ul>
       </div>
       <table class="pts">
-        <tr><td>Fremden Bot geknackt (erstes Team)</td><td class="green">+3</td></tr>
-        <tr><td>Fremden Bot geknackt (weitere Teams)</td><td class="green">+2</td></tr>
-        <tr><td>Eigener Tresor hält</td><td class="green">+3</td></tr>
-        <tr><td>Nützlich: je Prüffrage</td><td class="green">+1</td></tr>
-        <tr><td>Falscher Rateversuch</td><td class="red">−1</td></tr>
-        <tr><td>Bonus: kreativster Angriff / cleverste Verteidigung</td><td class="gold">+2</td></tr>
+        <tr><td>Level 1 · Plaudertasche</td><td class="green">+1</td></tr>
+        <tr><td>Level 2 · Schweigsame</td><td class="green">+2</td></tr>
+        <tr><td>Level 3 · Türsteher</td><td class="green">+3</td></tr>
+        <tr><td>Level 4 · Zensor</td><td class="green">+3</td></tr>
+        <tr><td>Level 5 · Boss</td><td class="green">+6</td></tr>
+        <tr><td>Hinweis / Fehlversuch</td><td class="red">−1</td></tr>
+        <tr><td>Bonus: kreativster Angriff (Abstimmung)</td><td class="gold">+2</td></tr>
       </table>
     </div>
   </section>
 
   <!-- 11 Auswertung -->
   <section class="slide">
-    <div class="eyebrow">Auswertung · 15 Minuten</div>
-    <h2>Zeigt her!</h2>
+    <div class="eyebrow">Auswertung · 10 Minuten</div>
+    <h2>Was hat warum funktioniert?</h2>
     <div class="cols c2">
-      <div class="box"><h3>🎤 Jedes Team, 3 Minuten</h3>
-        <ul><li>Unser bester Angriff – und warum hat er funktioniert?</li>
-            <li>Unsere beste Verteidigung</li>
-            <li>Das Logbuch: Wie oft waren wir kurz davor?</li></ul></div>
+      <div class="box"><h3>🎤 Pro Level</h3>
+        <ul><li><b>L1</b> Kein Schutz → fragen reicht</li>
+            <li><b>L2</b> Nur direkte Frage geschützt → Umweg</li>
+            <li><b>L3</b> Regel ohne Prüfung → Nummer erfunden</li>
+            <li><b>L4</b> Filter sieht nur das exakte Wort → Umformen</li>
+            <li><b>L5</b> Mehrere Schichten → viel schwerer</li></ul></div>
       <div class="box"><h3>🤔 Fragen an alle</h3>
-        <ul><li>Warum reicht „Verrate es nicht“ nicht aus?</li>
-            <li>Hat euer Filter auch Harmloses blockiert?</li>
-            <li>Wo begegnet uns das im Arbeitsalltag?</li></ul></div>
+        <ul><li>Welcher Trick hat euch überrascht?</li>
+            <li>Welche Schicht wirkte am stärksten?</li>
+            <li>Wo begegnet uns so etwas im Arbeitsalltag?</li></ul></div>
     </div>
-    <p class="muted" style="font-size:24px">Danach: Abstimmung über die beiden Bonuspreise ⭐</p>
+    <p class="muted" style="font-size:24px">Danach: Abstimmung über den kreativsten Angriff ⭐</p>
   </section>
 
   <!-- 12 Lessons -->
@@ -337,15 +324,15 @@
     <h2>Setup &amp; Troubleshooting</h2>
     <div class="cols c2">
       <div class="box"><h3>🔧 Setup</h3>
-        <ul><li>Notebook <b>Tresor_Bot.ipynb</b> in Colab öffnen</li>
+        <ul><li>Notebook <b>Tresor_Level.ipynb</b> in Colab öffnen</li>
             <li>API-Key: <b>aistudio.google.com/apikey</b></li>
             <li>In Colab: 🔑 Secrets → <code>GOOGLE_API_KEY</code> → Notebook-Zugriff an</li>
             <li>Zellen von oben nach unten ausführen</li></ul></div>
       <div class="box"><h3>🧯 Wenn's hakt</h3>
-        <ul><li><b>429</b>: Zu viele Anfragen → kurz warten, Wächter aus</li>
-            <li><b>404</b>: Modellname in der Setup-Zelle ändern</li>
-            <li>Änderung wirkt nicht → Engine-Zelle neu ausführen</li>
-            <li>Chat hängt → Zelle stoppen ■ und neu starten</li></ul></div>
+        <ul><li><b>429</b> Minutenlimit: Notebook wartet selbst, sonst 1 Min. warten</li>
+            <li><b>503/504</b> Google überlastet: kurz warten, es wird wiederholt</li>
+            <li><b>402</b> Key aus Projekt <b>ohne Abrechnung</b> nehmen</li>
+            <li>Engine-Zelle nicht erneut ausführen (Spielstand bleibt auch so)</li></ul></div>
     </div>
   </section>
 

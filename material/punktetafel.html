@@ -61,15 +61,16 @@
 
   <section class="card editor no-print" id="editor">
     <h2>Punkte eintragen</h2>
+    <p class="muted" style="margin-top:-6px">Pro Level die Punkte, die das Team bei <code>!punkte</code> im Notebook zeigt (Hinweise und Fehlversuche sind dort schon abgezogen).</p>
     <table>
       <thead>
         <tr>
           <th>Team</th>
-          <th>Nützlich<small>+1 je Prüffrage (max. 3)</small></th>
-          <th>Tresor hält<small>+3</small></th>
-          <th>Geknackt (1.)<small>+3 je Bot</small></th>
-          <th>Geknackt (weitere)<small>+2 je Bot</small></th>
-          <th>Fehlversuche<small>−1 je Versuch</small></th>
+          <th>Level 1<small>max. 1</small></th>
+          <th>Level 2<small>max. 2</small></th>
+          <th>Level 3<small>max. 3</small></th>
+          <th>Level 4<small>max. 3</small></th>
+          <th>Boss<small>max. 6</small></th>
           <th>Bonus<small>+2 je Preis</small></th>
           <th></th>
         </tr>
@@ -85,16 +86,18 @@
 </div>
 
 <script>
-const KEY = "tresor-punktetafel-v1";
+const KEY = "tresor-punktetafel-v3";
+const LEVEL = ["l1", "l2", "l3", "l4", "l5"];
+// Punkte pro Level so eintragen, wie das Team sie bei !punkte im Notebook zeigt (Hinweise und Fehlversuche sind dort schon abgezogen)
 const FELDER = [
-  { id: "nuetzlich", wert: 1, max: 3 },
-  { id: "haelt", wert: 3, toggle: true },
-  { id: "erster", wert: 3 },
-  { id: "weitere", wert: 2 },
-  { id: "fehl", wert: -1 },
-  { id: "bonus", wert: 2 },
+  { id: "l1", wert: 1, max: 1 },
+  { id: "l2", wert: 1, max: 2 },
+  { id: "l3", wert: 1, max: 3 },
+  { id: "l4", wert: 1, max: 3 },
+  { id: "l5", wert: 1, max: 6 },
+  { id: "bonus", wert: 2, max: 4 },
 ];
-const neu = n => ({ name: `Team ${n}`, nuetzlich: 0, haelt: false, erster: 0, weitere: 0, fehl: 0, bonus: 0 });
+const neu = n => ({ name: `Team ${n}`, l1: 0, l2: 0, l3: 0, l4: 0, l5: 0, bonus: 0 });
 
 let teams;
 try { teams = JSON.parse(localStorage.getItem(KEY)); } catch (e) { teams = null; }
@@ -111,10 +114,9 @@ function renderBoard() {
   document.getElementById("board").innerHTML = sortiert.map((x, k) => {
     if (x.s !== vorher) { platz = k + 1; vorher = x.s; }
     const tags = [];
-    if (x.t.haelt) tags.push('<span class="tag safe">🛡️ Tresor hält</span>');
-    const geknackt = x.t.erster + x.t.weitere;
-    if (geknackt) tags.push(`<span class="tag">🗝️ ${geknackt} geknackt</span>`);
-    if (x.t.nuetzlich) tags.push(`<span class="tag">✅ ${x.t.nuetzlich}/3 nützlich</span>`);
+    const levelPunkte = LEVEL.reduce((sum, k) => sum + x.t[k], 0);
+    if (levelPunkte) tags.push(`<span class="tag">🗝️ ${levelPunkte} Level-Punkte</span>`);
+    if (x.t.l5) tags.push('<span class="tag safe">👹 Boss geknackt</span>');
     if (x.t.bonus) tags.push(`<span class="tag">⭐ ${x.t.bonus} Bonus</span>`);
     return `<div class="card row">
       <div class="rank">${platz === 1 && x.s > 0 ? "🏆" : platz}</div>
@@ -131,7 +133,7 @@ function renderEditor() {
     <tr>
       <td><input type="text" value="${esc(t.name)}" data-i="${i}" data-f="name" aria-label="Teamname"></td>
       ${FELDER.map(f => f.toggle
-        ? `<td><input class="toggle" type="checkbox" ${t[f.id] ? "checked" : ""} data-i="${i}" data-f="${f.id}" aria-label="Tresor hält"></td>`
+        ? `<td><input class="toggle" type="checkbox" ${t[f.id] ? "checked" : ""} data-i="${i}" data-f="${f.id}" aria-label="Level geknackt"></td>`
         : `<td><span class="step">
              <button data-i="${i}" data-f="${f.id}" data-d="-1" aria-label="weniger">−</button>
              <output>${t[f.id]}</output>
