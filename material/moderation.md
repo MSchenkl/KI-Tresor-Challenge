@@ -19,7 +19,8 @@ Die Level wurden nur mit einer **simulierten** Gemini-API getestet (Spielstand, 
 ## ✅ Vorbereitung (am Vortag)
 
 - [ ] **Pro Team ein Laptop** mit Google-Konto und Zugriff auf [Colab](https://colab.research.google.com).
-- [ ] **Pro Team ein eigener Gemini-API-Key** aus [aistudio.google.com/apikey](https://aistudio.google.com/apikey), und zwar aus einem **Projekt ohne Abrechnung** (kostenlose Stufe). Keys aus Projekten mit leerem Guthaben melden Fehler 402.
+- [ ] **Pro Team ein eigener Gemini-API-Key.** Schickt den Teilnehmenden vorab die [Anleitung zum API-Key](api-key-anleitung.md): Jede Gruppe legt den Key in einem **eigenen Projekt** an, denn das Minutenlimit gilt pro Projekt. Die Anleitung steht auch im Notebook unter „Setup“.
+- [ ] Der Key kommt aus [aistudio.google.com/apikey](https://aistudio.google.com/apikey), und zwar aus einem **Projekt ohne Abrechnung** (kostenlose Stufe). Keys aus Projekten mit leerem Guthaben melden Fehler 402.
 - [ ] Mit jedem Key das [Level-Notebook](../Tresor_Level.ipynb) einmal bis zur Engine-Zelle ausführen. Die Setup-Zelle muss `Verbindung steht ✅` zeigen.
 - [ ] [Präsentation](../praesentation/index.html) und [Punktetafel](punktetafel.html) auf dem Beamer-Laptop öffnen. In der Präsentation öffnet **T** den Timer.
 - [ ] Den Link zum Notebook für die Teams bereithalten (Chat oder QR-Code):

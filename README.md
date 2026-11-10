@@ -40,6 +40,7 @@ Hinweise und falsche Lösungsversuche kosten je 1 Punkt. Befehle im Chat: `!loes
 |---|---|---|
 | [`Tresor_Level.ipynb`](Tresor_Level.ipynb) | **Hauptspiel:** 5 Level mit Hinweisen, Punkten und Notausgang | Teams |
 | [`praesentation/index.html`](praesentation/index.html) | 15 Folien mit Timer (<kbd>T</kbd>) und Vollbild (<kbd>F</kbd>) | Beamer |
+| [`material/api-key-anleitung.md`](material/api-key-anleitung.md) | Schritt für Schritt: eigenen API-Key erstellen und in Colab hinterlegen | Teilnehmende |
 | [`material/moderation.md`](material/moderation.md) | Ablauf, Lösungen und Hinweise je Level, Spickzettel, Troubleshooting | Moderator |
 | [`material/punktetafel.html`](material/punktetafel.html) | Live-Rangliste für den Beamer | Moderator |
 | [`material/punktetabelle.csv`](material/punktetabelle.csv) | Dieselbe Punktetabelle für Excel | Moderator |
